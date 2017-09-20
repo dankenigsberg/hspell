@@ -1,0 +1,13 @@
+#!/bin/bash -e
+#
+# perline cmd [args]
+#
+# break stdin into separate lines and feed them one by one to cmd.
+# this script is used here because I did not find another way to enable line
+# buffering for iconv.
+
+cmd=$*
+while read line; do
+    echo "$line" | $cmd
+done
+
